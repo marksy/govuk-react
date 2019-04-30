@@ -1,42 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import glamorous from 'glamorous';
-import { BLUE, PURPLE, YELLOW } from 'govuk-colours';
+import Link from '@govuk-react/link';
 
-const asAnchor = (AnchorType) => {
-  const Anchor = props => (
-    <AnchorType {...props}>{props.children}</AnchorType>
-  );
+import deprecate from '../deprecate';
 
-  Anchor.propTypes = {
-    children: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
-      .isRequired,
-    onClick: PropTypes.func,
-    disabled: PropTypes.bool,
-  };
-
-  Anchor.defaultProps = {
-    onClick: undefined,
-    disabled: undefined,
-  };
-
-  const StyledHoc = glamorous(Anchor)({
-    color: BLUE,
-    padding: '3px',
-    margin: '-3px',
-    outlineColor: 'transparent',
-    display: 'inline-block',
-    textDecoration: 'underline',
-    ':focus': {
-      backgroundColor: YELLOW,
-      outline: `3px solid ${YELLOW}`,
-    },
-    ':visited': {
-      color: PURPLE,
-    },
-  });
-
-  return StyledHoc;
-};
+const asAnchor = AnchorType =>
+  deprecate(props => <Link as={AnchorType} {...props} />, '(use of asAnchor HOC - please use Link component instead)');
 
 export default asAnchor;

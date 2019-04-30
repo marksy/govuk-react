@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow, mount } from 'enzyme';
 
-import Checkbox from './';
+import Checkbox from '.';
 
 describe('Checkbox', () => {
   const example = 'example';
@@ -25,5 +25,11 @@ describe('Checkbox', () => {
 
   it('matches wrapper snapshot', () => {
     expect(mount(wrapper)).toMatchSnapshot('wrapper mount');
+  });
+  it('renders disabled checkbox', () => {
+    expect(mount(<Checkbox disabled>Example</Checkbox>)).toMatchSnapshot('disabled');
+  });
+  it('can render with hint text', () => {
+    expect(mount(<Checkbox hint="Hint text">Example with hint text</Checkbox>)).toMatchSnapshot('hint text');
   });
 });

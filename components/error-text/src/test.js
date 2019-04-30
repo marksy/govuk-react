@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { mount } from 'enzyme';
-import ErrorText from './';
+
+import ErrorText from '.';
 
 describe('ErrorText', () => {
   const example = 'example';

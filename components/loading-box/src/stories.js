@@ -1,22 +1,27 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, text, number, boolean } from '@storybook/addon-knobs/react';
-import Header, { H1, H2 } from '@govuk-react/header';
+import { H1, H2 } from '@govuk-react/heading';
 import InputField from '@govuk-react/input-field';
 import Button from '@govuk-react/button';
 import LabelText from '@govuk-react/label-text';
+import Link from '@govuk-react/link';
 import Radio from '@govuk-react/radio';
 import PhaseBanner from '@govuk-react/phase-banner';
-import { asAnchor } from '@govuk-react/hoc';
+import { withDocsCustom } from '@govuk-react/storybook-components';
 
 import LoadingBox from '.';
+import ReadMe from '../README.md';
 
-const stories = storiesOf('LoadingBox', module);
-const AnchorLink = asAnchor('a');
+const stories = storiesOf('Misc/LoadingBox', module);
+const examples = storiesOf('Misc/LoadingBox/Examples', module);
+
+stories.addDecorator(withDocsCustom(ReadMe));
+
 const spacer = <p style={{ marginTop: 0 }}>&nbsp;</p>;
 stories.addDecorator(withKnobs);
 
-stories.add('default', () => (
+stories.add('Component default', () => (
   <LoadingBox
     loading={boolean('loading', false)}
     backgroundColor={text('backgroundColor', '#fff')}
@@ -28,23 +33,18 @@ stories.add('default', () => (
   >
     <div style={{ padding: '0 12px' }}>
       <PhaseBanner level="alpha">
-      This part of GOV.UK is being rebuilt &#8211;{' '}
-        <AnchorLink href="https://example.com">find out what that means</AnchorLink>
+        This part of GOV.UK is being rebuilt &#8211; <Link href="https://example.com">find out what that means</Link>
       </PhaseBanner>
       {spacer}
-      <Header level={2}>Toggle loading settings under `knobs`</Header>
-      <InputField
-        name="group1"
-      >
-      Email address
-      </InputField>
+      <H2>Toggle loading settings under `knobs`</H2>
+      <InputField>Email address</InputField>
       {spacer}
       <Button start>Continue</Button>
     </div>
   </LoadingBox>
 ));
 
-stories.add('preset to loading', () => (
+examples.add('preset to loading', () => (
   <LoadingBox
     loading={boolean('loading', true)}
     backgroundColor={text('backgroundColor', '#fff')}
@@ -55,23 +55,18 @@ stories.add('preset to loading', () => (
   >
     <div style={{ padding: '0 12px' }}>
       <PhaseBanner level="alpha">
-      This part of GOV.UK is being rebuilt &#8211;{' '}
-        <AnchorLink href="https://example.com">find out what that means</AnchorLink>
+        This part of GOV.UK is being rebuilt &#8211; <Link href="https://example.com">find out what that means</Link>
       </PhaseBanner>
       {spacer}
-      <Header level={2}>Toggle loading settings under `knobs`</Header>
-      <InputField
-        name="group1"
-      >
-      Email address
-      </InputField>
+      <H2>Toggle loading settings under `knobs`</H2>
+      <InputField>Email address</InputField>
       {spacer}
       <Button start>Continue</Button>
     </div>
   </LoadingBox>
 ));
 
-stories.add('LoadingBox (long)', () => (
+examples.add('LoadingBox (long)', () => (
   <LoadingBox
     loading={boolean('loading', false)}
     backgroundColor={text('backgroundColor', '#fff')}
@@ -82,22 +77,15 @@ stories.add('LoadingBox (long)', () => (
   >
     <div style={{ padding: '0 12px' }}>
       <PhaseBanner level="alpha">
-      This part of GOV.UK is being rebuilt &#8211;{' '}
-        <AnchorLink href="https://example.com">find out what that means</AnchorLink>
+        This part of GOV.UK is being rebuilt &#8211; <Link href="https://example.com">find out what that means</Link>
       </PhaseBanner>
       {spacer}
-      <Header level={2}>Toggle loading settings under `knobs`</Header>
-      <InputField name="group1">
-        First name
-      </InputField>
+      <H2>Toggle loading settings under `knobs`</H2>
+      <InputField>First name</InputField>
       {spacer}
-      <InputField name="group1">
-        Last name
-      </InputField>
+      <InputField>Last name</InputField>
       {spacer}
-      <InputField name="group1">
-        Email address
-      </InputField>
+      <InputField>Email address</InputField>
       {spacer}
       <div style={{ overflow: 'hidden' }}>
         <LabelText>Do you want us to contact you?</LabelText>
@@ -109,25 +97,18 @@ stories.add('LoadingBox (long)', () => (
         </Radio>
       </div>
       {spacer}
-      <InputField
-        name="group1"
-        hint="It’s on your National Insurance card"
-      >
-      National Insurance number
-      </InputField>
+      <InputField hint="It’s on your National Insurance card">National Insurance number</InputField>
       {spacer}
       <Button start>Continue</Button>
     </div>
   </LoadingBox>
 ));
 
-stories.add('with children that have short height (minHeight 100px)', () => (
-  <LoadingBox loading>
-    Lorem ipsum dolor sit amet
-  </LoadingBox>
+examples.add('with children that have short height (minHeight 10px)', () => (
+  <LoadingBox loading>Lorem ipsum dolor sit amet</LoadingBox>
 ));
 
-stories.add('with bolded texts', () => (
+examples.add('with bolded texts', () => (
   <LoadingBox loading>
     <H1>Lorem ipsum dolor sit amet</H1>
     <H2>Consectetur adipisicing elit. Quia incidunt, earum molestiae omnis labore adipisci.</H2>

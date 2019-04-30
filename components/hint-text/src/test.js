@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { mount } from 'enzyme';
-import HintText from './';
+
+import HintText from '.';
 
 describe('HintText', () => {
   const example = 'example';

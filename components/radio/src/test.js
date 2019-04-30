@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { mount } from 'enzyme';
 
-import Radio from './';
+import Radio from '.';
 
 describe('Radio', () => {
   let props;
@@ -37,7 +37,15 @@ describe('Radio', () => {
     expect(mount(wrapper)).toMatchSnapshot('standard mount');
   });
 
+  it('disabled', () => {
+    expect(mount(<Radio disabled>Example</Radio>)).toMatchSnapshot('disabled');
+  });
+
   it('matches snapshot for inline', () => {
     expect(mount(wrapperInline)).toMatchSnapshot('inline mount');
+  });
+
+  it('can render with hint text', () => {
+    expect(mount(<Radio hint="Hint text">Example with hint text</Radio>)).toMatchSnapshot('hint text');
   });
 });

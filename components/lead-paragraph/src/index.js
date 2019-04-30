@@ -1,34 +1,33 @@
-// https://govuk-static.herokuapp.com/component-guide/lead_paragraph
-
 import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import glamorous from 'glamorous';
-import { withWhiteSpace } from '@govuk-react/hoc';
+import { spacing, typography } from '@govuk-react/lib';
 
-import {
-  FONT_SIZE,
-  LINE_HEIGHT,
-  MEDIA_QUERIES,
-  NTA_LIGHT,
-} from '@govuk-react/constants';
-
-const LeadParagraphInner = glamorous.p({
-  fontFamily: NTA_LIGHT,
-  fontSize: FONT_SIZE.SIZE_18,
-  lineHeight: LINE_HEIGHT.SIZE_18,
-  marginTop: 0,
-  [MEDIA_QUERIES.LARGESCREEN]: {
-    fontSize: FONT_SIZE.SIZE_24,
-    lineHeight: LINE_HEIGHT.SIZE_24,
-  },
-});
-
-const LeadParagraph = ({ children }) => (
-  <LeadParagraphInner>{children}</LeadParagraphInner>
+const StyledParagraph = styled('p')(
+  typography.textColour,
+  typography.font({ size: 24 }),
+  { marginTop: 0 },
+  spacing.withWhiteSpace({ marginBottom: 6 })
 );
 
+/**
+ *
+ * ### Usage
+ *
+ *
+ * Simple
+ * ```jsx
+ * <LeadParagraph>LeadParagraph example</LeadParagraph>
+ * ```
+ *
+ * ### References
+ * - https://design-system.service.gov.uk/styles/typography/#paragraphs
+ */
+const LeadParagraph = props => <StyledParagraph {...props} />;
+
 LeadParagraph.propTypes = {
+  /** Text in the Lead paragraph */
   children: PropTypes.node.isRequired,
 };
 
-export default withWhiteSpace({ marginBottom: 5 })(LeadParagraph);
+export default LeadParagraph;

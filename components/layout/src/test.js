@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { mount } from 'enzyme';
-import Layout from './';
+
+import Layout from '.';
 
 describe('Layout', () => {
   let props;

@@ -1,40 +1,49 @@
 import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import glamorous from 'glamorous';
-import {
-  FONT_SIZE,
-  LINE_HEIGHT,
-  MEDIA_QUERIES,
-  NTA_LIGHT,
-  SPACING,
-} from '@govuk-react/constants';
-import { withWhiteSpace } from '@govuk-react/hoc';
+import { SPACING_POINTS } from '@govuk-react/constants';
+import { spacing, typography } from '@govuk-react/lib';
 
-const GListItem = glamorous.li({
-  fontFamily: NTA_LIGHT,
-  fontWeight: 400,
-  textTransform: 'none',
-  fontSize: FONT_SIZE.SIZE_14,
-  lineHeight: LINE_HEIGHT.SIZE_14,
-  width: '100%',
-  [MEDIA_QUERIES.LARGESCREEN]: {
-    fontSize: FONT_SIZE.SIZE_16,
-    lineHeight: LINE_HEIGHT.SIZE_16,
-    marginBottom: SPACING.SCALE_1,
-  },
-});
-
-const ListItem = ({ children, className }) => (
-  <GListItem className={className}>{children}</GListItem>
+const ListItem = styled('li')(
+  // including font definition here is belt & braces
+  // govuk-frontend doesn't bother to do that
+  typography.font({ size: 19 }),
+  { marginBottom: SPACING_POINTS[1] },
+  spacing.withWhiteSpace()
 );
 
-ListItem.defaultProps = {
-  className: undefined,
-};
+/**
+ *
+ * ### Usage
+ *
+ *
+ * Simple
+ * ```jsx
+ * <ListItem>List item example</ListItem>
+ * ```
+ *
+ * With a link
+ * ```jsx
+ * import { Link } from '@govuk-react/link';
+ *
+ * <ListItem>
+ *   <Link href="https://www.google.com/">List item example</Link>
+ * </ListItem>
+ * ```
+ *
+ * ### References
+ * - https://github.com/alphagov/govuk-frontend/blob/master/src/core/_lists.scss
+ */
 
-ListItem.propTypes = {
+// Do the react-docgen dance
+const DocumentedComponent = props => <ListItem {...props} />;
+
+DocumentedComponent.propTypes = {
+  /** List item content */
   children: PropTypes.node.isRequired,
-  className: PropTypes.string,
 };
 
-export default withWhiteSpace({ marginBottom: 0 })(ListItem);
+ListItem.propTypes = DocumentedComponent.propTypes;
+
+export { DocumentedComponent };
+export default ListItem;

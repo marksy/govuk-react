@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { mount } from 'enzyme';
-import Select from './';
+
+import Select from '.';
 
 describe('Select', () => {
   const example = 'example';

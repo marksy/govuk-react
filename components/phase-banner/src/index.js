@@ -1,53 +1,74 @@
-// https://govuk-elements.herokuapp.com/alpha-beta-banners/
-
 import React from 'react';
 import PropTypes from 'prop-types';
-import glamorous from 'glamorous';
-import { BLUE } from 'govuk-colours';
-import {
-  FONT_SIZE,
-  LINE_HEIGHT,
-  MEDIA_QUERIES,
-  NTA_LIGHT,
-} from '@govuk-react/constants';
-import { withWhiteSpace } from '@govuk-react/hoc';
+import styled from 'styled-components';
+import { BORDER_COLOUR } from 'govuk-colours';
+import { SPACING_POINTS } from '@govuk-react/constants';
+import { spacing, typography } from '@govuk-react/lib';
+import Tag from '@govuk-react/tag';
 
-import PhaseBadge from '@govuk-react/phase-badge';
+const StyledBanner = styled('div')(
+  {
+    paddingTop: SPACING_POINTS[2],
+    paddingBottom: SPACING_POINTS[2],
 
-const PhaseBannerInner = glamorous.div({
-  borderBottom: '1px solid #bfc1c3',
-  boxSizing: 'border-box',
-  paddingTop: '10px',
-  paddingBottom: '10px',
-  fontFamily: NTA_LIGHT,
-  fontWeight: 400,
-  textTransform: 'none',
-  fontSize: FONT_SIZE.SIZE_14,
-  lineHeight: LINE_HEIGHT.SIZE_14,
-  [MEDIA_QUERIES.LARGESCREEN]: {
-    fontSize: FONT_SIZE.SIZE_16,
-    lineHeight: LINE_HEIGHT.SIZE_16,
+    borderBottom: `1px solid ${BORDER_COLOUR}`,
   },
-  '> a': {
-    color: BLUE,
+  spacing.withWhiteSpace()
+);
+
+const BannerContent = styled('p')(typography.font({ size: 16 }), typography.textColour, {
+  display: 'table',
+  margin: 0,
+
+  [Tag]: {
+    marginRight: SPACING_POINTS[2],
   },
 });
 
-const PhaseBanner = ({ level, children, className }) => (
-  <PhaseBannerInner className={className}>
-    <PhaseBadge>{level}</PhaseBadge>
-    {children}
-  </PhaseBannerInner>
+const BannerText = styled('span')({
+  display: 'table-cell',
+  verticalAlign: 'baseline',
+});
+
+/**
+ *
+ * ### Usage
+ *
+ * Alpha
+ * ```jsx
+ * <PhaseBanner level="alpha">
+ *    This part of GOV.UK is being rebuilt &#8211;{' '}
+ *    <AnchorLink href="https://example.com">find out what that means</AnchorLink>
+ *  </PhaseBanner>
+ * ```
+ *
+ * Beta
+ * ```jsx
+ * <PhaseBanner level="beta">
+ *    This part of GOV.UK is being rebuilt &#8211;{' '}
+ *    <AnchorLink href="https://example.com">find out what that means</AnchorLink>
+ *  </PhaseBanner>
+ * ```
+ *
+ * ### References:
+ * - https://github.com/alphagov/govuk-frontend/tree/master/src/components/phase-banner
+ * - https://design-system.service.gov.uk/components/phase-banner/
+ *
+ */
+const PhaseBanner = ({ level, children, ...props }) => (
+  <StyledBanner {...props}>
+    <BannerContent>
+      <Tag>{level}</Tag>
+      <BannerText>{children}</BannerText>
+    </BannerContent>
+  </StyledBanner>
 );
 
-PhaseBanner.defaultProps = {
-  className: undefined,
-};
-
 PhaseBanner.propTypes = {
+  /** Children text and links */
   children: PropTypes.node.isRequired,
+  /** Alpha or beta banner */
   level: PropTypes.string.isRequired,
-  className: PropTypes.string,
 };
 
-export default withWhiteSpace({ marginBottom: 0 })(PhaseBanner);
+export default PhaseBanner;

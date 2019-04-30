@@ -1,17 +1,19 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { asAnchor } from '@govuk-react/hoc';
+import { withDocsCustom } from '@govuk-react/storybook-components';
+import Link from '@govuk-react/link';
 
 import ListNavigation from '.';
+import ReadMe from '../README.md';
 
-const AnchorTag = asAnchor('a');
+const stories = storiesOf('Navigation/ListNavigation', module);
 
-storiesOf('ListNavigation', module).add('ListNavigation', () => (
+stories.addDecorator(withDocsCustom(ReadMe));
+
+stories.add('Component default', () => (
   <ListNavigation listStyleType="square">
-    <AnchorTag href="https://example.com/?=1">lorem dolor set cetra</AnchorTag>
-    <AnchorTag href="https://example.com/?=2">
-      Meta logi arche decip con
-    </AnchorTag>
-    <AnchorTag href="https://example.com/?=2">Ignis prevo don coldo</AnchorTag>
+    <Link href="https://example.com/?=1">lorem dolor set cetra</Link>
+    <Link href="https://example.com/?=2">Meta logi arche decip con</Link>
+    <Link href="https://example.com/?=2">Ignis prevo don coldo</Link>
   </ListNavigation>
 ));

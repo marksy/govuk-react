@@ -2,26 +2,21 @@ import React from 'react';
 import { Field } from 'react-final-form';
 import { storiesOf } from '@storybook/react';
 import PropTypes from 'prop-types';
-import { FinalFormWrapper } from '@govuk-react/storybook-components';
+import { withKnobs } from '@storybook/addon-knobs/react';
+import { FinalFormWrapper, withDocsCustom } from '@govuk-react/storybook-components';
 
 import MultiChoice from '@govuk-react/multi-choice';
 import Radio from '.';
+import ReadMe from '../README.md';
 
 const required = value => (value ? undefined : 'Required');
 
-const RadioGroup = ({
-  label, hint, options, inline, input, meta,
-}) => (
+const RadioGroup = ({ label, hint, options, inline, input, meta }) => (
   <div>
     <MultiChoice label={label} hint={hint} meta={meta}>
       {options.map(o => (
         <div key={o.value}>
-          <Radio
-            {...input}
-            value={o.value}
-            inline={inline}
-            checked={o.value === input.value}
-          >
+          <Radio {...input} value={o.value} inline={inline} checked={o.value === input.value}>
             {o.title}
           </Radio>
         </div>
@@ -35,7 +30,7 @@ RadioGroup.defaultProps = {
   meta: {},
   hint: undefined,
   inline: false,
-  options: {},
+  options: [],
 };
 
 RadioGroup.propTypes = {
@@ -44,13 +39,23 @@ RadioGroup.propTypes = {
   label: PropTypes.string.isRequired,
   hint: PropTypes.string,
   inline: PropTypes.bool,
-  options: PropTypes.shape({
-    title: PropTypes.string,
-    value: PropTypes.string,
-  }),
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      value: PropTypes.string,
+    })
+  ),
 };
 
-storiesOf('Radio', module).add('Radio stacked', () => (
+const stories = storiesOf('Form/Radio', module);
+const examples = storiesOf('Form/Radio/Examples', module);
+
+stories.addDecorator(withKnobs);
+stories.addDecorator(withDocsCustom(ReadMe));
+
+stories.add('Component default', () => <Radio name="group1">Radio button text example</Radio>);
+
+examples.add('Radio stacked', () => (
   <div>
     <Radio name="group1">Waste from animal carcasses</Radio>
     <Radio name="group1">Waste from mines or quarries</Radio>
@@ -58,7 +63,7 @@ storiesOf('Radio', module).add('Radio stacked', () => (
   </div>
 ));
 
-storiesOf('Radio', module).add('Radio inline', () => (
+examples.add('Radio inline', () => (
   <div>
     <Radio name="group1" inline>
       Yes
@@ -69,7 +74,7 @@ storiesOf('Radio', module).add('Radio inline', () => (
   </div>
 ));
 
-storiesOf('Radio', module).add('Radio disabled', () => (
+examples.add('Radio disabled', () => (
   <div>
     <Radio name="group1" disabled="disabled">
       Disabled checkbox option
@@ -77,7 +82,7 @@ storiesOf('Radio', module).add('Radio disabled', () => (
   </div>
 ));
 
-storiesOf('Radio', module).add('Radio preselected', () => (
+examples.add('Radio preselected', () => (
   <div>
     <Radio name="group1" checked>
       Farm or agricultural waste
@@ -85,7 +90,7 @@ storiesOf('Radio', module).add('Radio preselected', () => (
   </div>
 ));
 
-storiesOf('Radio', module).add('Radio preselected & disabled', () => (
+examples.add('Radio preselected & disabled', () => (
   <div>
     <Radio name="group1" disabled="disabled" checked>
       Farm or agricultural waste
@@ -93,22 +98,33 @@ storiesOf('Radio', module).add('Radio preselected & disabled', () => (
   </div>
 ));
 
-storiesOf('Radio', module).add(
-  'Usage with Final/Redux Form - multi checkbox validation',
-  () => (
-    <FinalFormWrapper>
-      <Field
-        name="likesAnimals"
-        label="Do you like animals?"
-        hint="You must tell us"
-        component={RadioGroup}
-        options={[
-          { title: 'Yep', value: 'yes' },
-          { title: 'Nope', value: 'no' },
-        ]}
-        validate={required}
-        inline
-      />
-    </FinalFormWrapper>
-  ),
-);
+examples.add('Radio with hint text', () => (
+  <div>
+    <Radio
+      name="group1"
+      hint="You'll have a user ID if you've registered for Self Assessment or filed a tax return online before."
+    >
+      Sign in with Government Gateway
+    </Radio>
+    <Radio
+      name="group1"
+      hint="You'll have an account if you've already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity."
+    >
+      Sign in with GOV.UK Verify
+    </Radio>
+  </div>
+));
+
+examples.add('Usage with Final/Redux Form - multi checkbox validation', () => (
+  <FinalFormWrapper>
+    <Field
+      name="likesAnimals"
+      label="Do you like animals?"
+      hint="You must tell us"
+      component={RadioGroup}
+      options={[{ title: 'Yep', value: 'yes' }, { title: 'Nope', value: 'no' }]}
+      validate={required}
+      inline
+    />
+  </FinalFormWrapper>
+));

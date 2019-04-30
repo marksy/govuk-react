@@ -1,131 +1,129 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Textarea matches snapshot for error: wrapperErrorText mount 1`] = `
-.glamor-1,
-[data-glamor-1] {
-  margin-bottom: 0;
-}
-
-.glamor-0,
-[data-glamor-0] {
-  font-family: "nta", Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  display: block;
-  clear: none;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.25;
-  color: #0b0c0c;
-  padding-bottom: 2px;
-  margin-bottom: 0;
-}
-
-.glamor-7,
-[data-glamor-7] {
+.c0 {
   display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
   flex-direction: column;
   box-sizing: border-box;
-  width: 100%;
   border-left: 4px solid #b10e1e;
   margin-right: 15px;
   padding-left: 10px;
   margin-bottom: 0;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
 }
 
-.glamor-7:after,
-[data-glamor-7]:after {
+.c0:after {
   content: '';
   display: table;
   clear: both;
 }
 
-.glamor-3,
-[data-glamor-3] {
-  display: block;
-  font-family: "nta", Arial, sans-serif;
+.c1 {
+  font-family: "nta",Arial,sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-weight: 700;
-  text-transform: none;
+  font-weight: 400;
   font-size: 16px;
   line-height: 1.25;
-  color: #b10e1e;
-  padding-top: 4px;
+  color: #0b0c0c;
+  display: block;
+  clear: none;
   padding-bottom: 2px;
   margin-bottom: 0;
 }
 
-.glamor-6,
-[data-glamor-6] {
+.c2 {
+  font-family: "nta",Arial,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  display: block;
+  margin-bottom: 15px;
+  clear: both;
+  color: #b10e1e;
+}
+
+.c3 {
   box-sizing: border-box;
-  font-family: "nta", Arial, sans-serif;
+  font-family: "nta",Arial,sans-serif;
   font-weight: 400;
   text-transform: none;
   font-size: 16px;
   line-height: 1.25;
   width: 100%;
   padding: 5px 4px 4px;
+  border: 2px solid #0b0c0c;
   border: 4px solid #b10e1e;
 }
 
-.glamor-6:focus,
-[data-glamor-6]:focus {
+.c3:focus {
   outline: 3px solid #ffbf47;
   outline-offset: 0;
 }
 
-@media only screen and (min-width: 641px) {
-  .glamor-1,
-  [data-glamor-1] {
+@media only screen and (min-width:641px) {
+  .c0 {
     margin-bottom: 0;
   }
 }
 
-@media only screen and (min-width: 641px) {
-  .glamor-0,
-  [data-glamor-0] {
+@media print {
+  .c1 {
+    font-size: 14px;
+    line-height: 1.15;
+  }
+}
+
+@media only screen and (min-width:641px) {
+  .c1 {
     font-size: 19px;
-    line-height: 1.3;
+    line-height: 1.3157894736842106;
+  }
+}
+
+@media print {
+  .c1 {
+    color: #000;
+  }
+}
+
+@media only screen and (min-width:641px) {
+  .c1 {
     margin-bottom: 0;
   }
 }
 
-@media only screen and (min-width: 641px) {
-  .glamor-7,
-  [data-glamor-7] {
-    max-width: 960px;
-    margin-bottom: 0;
+@media print {
+  .c2 {
+    font-size: 14px;
+    line-height: 1.15;
   }
 }
 
-@media only screen and (min-width: 641px) {
-  .glamor-3,
-  [data-glamor-3] {
+@media only screen and (min-width:641px) {
+  .c2 {
     font-size: 19px;
-    line-height: 1.3;
-    margin-bottom: 0;
+    line-height: 1.3157894736842106;
   }
 }
 
-@media only screen and (min-width: 641px) {
-  .glamor-6,
-  [data-glamor-6] {
+@media only screen and (min-width:641px) {
+  .c3 {
     font-size: 19px;
     line-height: 1.3;
     width: 75%;
   }
 }
 
-<glamorous(TextArea)
+<TextArea
   errorText="example"
+  input={Object {}}
   meta={
     Object {
       "error": "example",
@@ -133,128 +131,234 @@ exports[`Textarea matches snapshot for error: wrapperErrorText mount 1`] = `
     }
   }
 >
-  <TextArea
-    className="glamor-1"
+  <Label
+    error="example"
     errorText="example"
-    input={Object {}}
-    meta={
-      Object {
-        "error": "example",
-        "touched": true,
-      }
-    }
   >
-    <glamorous(Label)
-      className="glamor-1"
+    <styled.label
       error="example"
+      errorText="example"
     >
-      <Label
-        className="glamor-1"
+      <StyledComponent
         error="example"
+        errorText="example"
+        forwardedComponent={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bdVaJa",
+              "isStatic": false,
+              "lastClassName": "c0",
+              "rules": Array [
+                "display: flex; flex-direction: column; box-sizing: border-box; :after {
+  content: ''; display: table; clear: both;
+}",
+                [Function],
+                [Function],
+              ],
+            },
+            "displayName": "styled.label",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-bdVaJa",
+            "target": "label",
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        forwardedRef={null}
       >
-        <glamorous(label)
-          className="glamor-1"
-          error="example"
+        <label
+          className="c0"
         >
-          <label
-            className="glamor-7"
+          <LabelText>
+            <styled.span>
+              <StyledComponent
+                forwardedComponent={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": Array [],
+                    "componentStyle": ComponentStyle {
+                      "componentId": "sc-bwzfXH",
+                      "isStatic": false,
+                      "lastClassName": "c1",
+                      "rules": Array [
+                        "font-family: \\"nta\\", Arial, sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; @media print {
+  font-size: 14px; line-height: 1.15;
+} font-weight: 400; font-size: 16px; line-height: 1.25; @media only screen and (min-width: 641px) {
+  font-size: 19px; line-height: 1.3157894736842106;
+}",
+                        "color: #0b0c0c; @media print {
+  color: #000;
+}",
+                        "display: block; clear: none; padding-bottom: 2px;",
+                        [Function],
+                        [Function],
+                      ],
+                    },
+                    "displayName": "styled.span",
+                    "foldedComponentIds": Array [],
+                    "render": [Function],
+                    "styledComponentId": "sc-bwzfXH",
+                    "target": "span",
+                    "toString": [Function],
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+              >
+                <span
+                  className="c1"
+                >
+                  example
+                </span>
+              </StyledComponent>
+            </styled.span>
+          </LabelText>
+          <ErrorText>
+            <styled.span>
+              <StyledComponent
+                forwardedComponent={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": Array [],
+                    "componentStyle": ComponentStyle {
+                      "componentId": "sc-htpNat",
+                      "isStatic": false,
+                      "lastClassName": "c2",
+                      "rules": Array [
+                        "font-family: \\"nta\\", Arial, sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; @media print {
+  font-size: 14px; line-height: 1.15;
+} font-weight: 700; font-size: 16px; line-height: 1.25; @media only screen and (min-width: 641px) {
+  font-size: 19px; line-height: 1.3157894736842106;
+}",
+                        "display: block; margin-bottom: 15px; clear: both; color: #b10e1e;",
+                        [Function],
+                      ],
+                    },
+                    "displayName": "styled.span",
+                    "foldedComponentIds": Array [],
+                    "render": [Function],
+                    "styledComponentId": "sc-htpNat",
+                    "target": "span",
+                    "toString": [Function],
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+              >
+                <span
+                  className="c2"
+                >
+                  example
+                </span>
+              </StyledComponent>
+            </styled.span>
+          </ErrorText>
+          <styled.textarea
+            error="example"
+            rows="5"
+            type="text"
           >
-            <glamorous(LabelText)>
-              <LabelText
-                className="glamor-1"
-              >
-                <glamorous(span)
-                  className="glamor-1"
-                >
-                  <span
-                    className="glamor-0"
-                  >
-                    example
-                  </span>
-                </glamorous(span)>
-              </LabelText>
-            </glamorous(LabelText)>
-            <glamorous(ErrorText)>
-              <ErrorText
-                className="glamor-1"
-              >
-                <glamorous(span)
-                  className="glamor-1"
-                >
-                  <span
-                    className="glamor-3"
-                  >
-                    example
-                  </span>
-                </glamorous(span)>
-              </ErrorText>
-            </glamorous(ErrorText)>
-            <glamorous(textarea)
+            <StyledComponent
               error="example"
+              forwardedComponent={
+                Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": Array [],
+                  "componentStyle": ComponentStyle {
+                    "componentId": "sc-ifAKCX",
+                    "isStatic": false,
+                    "lastClassName": "c3",
+                    "rules": Array [
+                      "box-sizing: border-box; font-family: \\"nta\\", Arial, sans-serif; font-weight: 400; text-transform: none; font-size: 16px; line-height: 1.25; @media only screen and (min-width: 641px) {
+  font-size: 19px; line-height: 1.3; width: 75%;
+} width: 100%; padding: 5px 4px 4px; border: 2px solid #0b0c0c; :focus {
+  outline: 3px solid #ffbf47; outline-offset: 0;
+}",
+                      [Function],
+                    ],
+                  },
+                  "displayName": "styled.textarea",
+                  "foldedComponentIds": Array [],
+                  "render": [Function],
+                  "styledComponentId": "sc-ifAKCX",
+                  "target": "textarea",
+                  "toString": [Function],
+                  "warnTooManyClasses": [Function],
+                  "withComponent": [Function],
+                }
+              }
+              forwardedRef={null}
               rows="5"
               type="text"
             >
               <textarea
-                className="glamor-6"
+                className="c3"
                 rows="5"
+                type="text"
               />
-            </glamorous(textarea)>
-          </label>
-        </glamorous(label)>
-      </Label>
-    </glamorous(Label)>
-  </TextArea>
-</glamorous(TextArea)>
+            </StyledComponent>
+          </styled.textarea>
+        </label>
+      </StyledComponent>
+    </styled.label>
+  </Label>
+</TextArea>
 `;
 
 exports[`Textarea matches snapshot for hint: wrapperHint mount 1`] = `
-.glamor-1,
-[data-glamor-1] {
-  margin-bottom: 0;
-}
-
-.glamor-7,
-[data-glamor-7] {
+.c0 {
   display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
   flex-direction: column;
   box-sizing: border-box;
-  width: 100%;
   margin-bottom: 0;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
 }
 
-.glamor-7:after,
-[data-glamor-7]:after {
+.c0:after {
   content: '';
   display: table;
   clear: both;
 }
 
-.glamor-0,
-[data-glamor-0] {
-  font-family: "nta", Arial, sans-serif;
+.c1 {
+  font-family: "nta",Arial,sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  display: block;
-  clear: none;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.25;
   color: #0b0c0c;
+  display: block;
+  clear: none;
   padding-bottom: 2px;
   margin-bottom: 0;
 }
 
-.glamor-6,
-[data-glamor-6] {
+.c2 {
+  font-family: "nta",Arial,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  display: block;
+  margin-bottom: 15px;
+  color: #6f777b;
+}
+
+.c3 {
   box-sizing: border-box;
-  font-family: "nta", Arial, sans-serif;
+  font-family: "nta",Arial,sans-serif;
   font-weight: 400;
   text-transform: none;
   font-size: 16px;
@@ -264,184 +368,281 @@ exports[`Textarea matches snapshot for hint: wrapperHint mount 1`] = `
   border: 2px solid #0b0c0c;
 }
 
-.glamor-6:focus,
-[data-glamor-6]:focus {
+.c3:focus {
   outline: 3px solid #ffbf47;
   outline-offset: 0;
 }
 
-.glamor-3,
-[data-glamor-3] {
-  display: block;
-  font-family: "nta", Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-weight: 400;
-  text-transform: none;
-  font-size: 16px;
-  line-height: 1.25;
-  color: #6f777b;
-  margin-bottom: 0;
-}
-
-@media only screen and (min-width: 641px) {
-  .glamor-1,
-  [data-glamor-1] {
+@media only screen and (min-width:641px) {
+  .c0 {
     margin-bottom: 0;
   }
 }
 
-@media only screen and (min-width: 641px) {
-  .glamor-7,
-  [data-glamor-7] {
-    max-width: 960px;
-    margin-bottom: 0;
+@media print {
+  .c1 {
+    font-size: 14px;
+    line-height: 1.15;
   }
 }
 
-@media only screen and (min-width: 641px) {
-  .glamor-0,
-  [data-glamor-0] {
+@media only screen and (min-width:641px) {
+  .c1 {
     font-size: 19px;
-    line-height: 1.3;
+    line-height: 1.3157894736842106;
+  }
+}
+
+@media print {
+  .c1 {
+    color: #000;
+  }
+}
+
+@media only screen and (min-width:641px) {
+  .c1 {
     margin-bottom: 0;
   }
 }
 
-@media only screen and (min-width: 641px) {
-  .glamor-6,
-  [data-glamor-6] {
+@media print {
+  .c2 {
+    font-size: 14px;
+    line-height: 1.15;
+  }
+}
+
+@media only screen and (min-width:641px) {
+  .c2 {
+    font-size: 19px;
+    line-height: 1.3157894736842106;
+  }
+}
+
+@media only screen and (min-width:641px) {
+  .c3 {
     font-size: 19px;
     line-height: 1.3;
     width: 75%;
   }
 }
 
-@media only screen and (min-width: 641px) {
-  .glamor-3,
-  [data-glamor-3] {
-    font-size: 19px;
-    line-height: 1.3;
-    margin-bottom: 0;
-  }
-}
-
-<glamorous(TextArea)
+<TextArea
   hint="example"
+  input={Object {}}
+  meta={Object {}}
 >
-  <TextArea
-    className="glamor-1"
-    hint="example"
-    input={Object {}}
-    meta={Object {}}
+  <Label
+    error={false}
   >
-    <glamorous(Label)
-      className="glamor-1"
+    <styled.label
+      error={false}
     >
-      <Label
-        className="glamor-1"
+      <StyledComponent
+        error={false}
+        forwardedComponent={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bdVaJa",
+              "isStatic": false,
+              "lastClassName": "c0",
+              "rules": Array [
+                "display: flex; flex-direction: column; box-sizing: border-box; :after {
+  content: ''; display: table; clear: both;
+}",
+                [Function],
+                [Function],
+              ],
+            },
+            "displayName": "styled.label",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-bdVaJa",
+            "target": "label",
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        forwardedRef={null}
       >
-        <glamorous(label)
-          className="glamor-1"
+        <label
+          className="c0"
         >
-          <label
-            className="glamor-7"
+          <LabelText>
+            <styled.span>
+              <StyledComponent
+                forwardedComponent={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": Array [],
+                    "componentStyle": ComponentStyle {
+                      "componentId": "sc-bwzfXH",
+                      "isStatic": false,
+                      "lastClassName": "c1",
+                      "rules": Array [
+                        "font-family: \\"nta\\", Arial, sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; @media print {
+  font-size: 14px; line-height: 1.15;
+} font-weight: 400; font-size: 16px; line-height: 1.25; @media only screen and (min-width: 641px) {
+  font-size: 19px; line-height: 1.3157894736842106;
+}",
+                        "color: #0b0c0c; @media print {
+  color: #000;
+}",
+                        "display: block; clear: none; padding-bottom: 2px;",
+                        [Function],
+                        [Function],
+                      ],
+                    },
+                    "displayName": "styled.span",
+                    "foldedComponentIds": Array [],
+                    "render": [Function],
+                    "styledComponentId": "sc-bwzfXH",
+                    "target": "span",
+                    "toString": [Function],
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+              >
+                <span
+                  className="c1"
+                >
+                  example
+                </span>
+              </StyledComponent>
+            </styled.span>
+          </LabelText>
+          <HintText>
+            <styled.span>
+              <StyledComponent
+                forwardedComponent={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": Array [],
+                    "componentStyle": ComponentStyle {
+                      "componentId": "sc-bxivhb",
+                      "isStatic": false,
+                      "lastClassName": "c2",
+                      "rules": Array [
+                        "font-family: \\"nta\\", Arial, sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; @media print {
+  font-size: 14px; line-height: 1.15;
+} font-weight: 400; font-size: 16px; line-height: 1.25; @media only screen and (min-width: 641px) {
+  font-size: 19px; line-height: 1.3157894736842106;
+}",
+                        "display: block; margin-bottom: 15px; color: #6f777b;",
+                        [Function],
+                      ],
+                    },
+                    "displayName": "styled.span",
+                    "foldedComponentIds": Array [],
+                    "render": [Function],
+                    "styledComponentId": "sc-bxivhb",
+                    "target": "span",
+                    "toString": [Function],
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+              >
+                <span
+                  className="c2"
+                >
+                  example
+                </span>
+              </StyledComponent>
+            </styled.span>
+          </HintText>
+          <styled.textarea
+            rows="5"
+            type="text"
           >
-            <glamorous(LabelText)>
-              <LabelText
-                className="glamor-1"
-              >
-                <glamorous(span)
-                  className="glamor-1"
-                >
-                  <span
-                    className="glamor-0"
-                  >
-                    example
-                  </span>
-                </glamorous(span)>
-              </LabelText>
-            </glamorous(LabelText)>
-            <glamorous(HintText)>
-              <HintText
-                className="glamor-1"
-              >
-                <glamorous(span)
-                  className="glamor-1"
-                >
-                  <span
-                    className="glamor-3"
-                  >
-                    example
-                  </span>
-                </glamorous(span)>
-              </HintText>
-            </glamorous(HintText)>
-            <glamorous(textarea)
+            <StyledComponent
+              forwardedComponent={
+                Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": Array [],
+                  "componentStyle": ComponentStyle {
+                    "componentId": "sc-ifAKCX",
+                    "isStatic": false,
+                    "lastClassName": "c3",
+                    "rules": Array [
+                      "box-sizing: border-box; font-family: \\"nta\\", Arial, sans-serif; font-weight: 400; text-transform: none; font-size: 16px; line-height: 1.25; @media only screen and (min-width: 641px) {
+  font-size: 19px; line-height: 1.3; width: 75%;
+} width: 100%; padding: 5px 4px 4px; border: 2px solid #0b0c0c; :focus {
+  outline: 3px solid #ffbf47; outline-offset: 0;
+}",
+                      [Function],
+                    ],
+                  },
+                  "displayName": "styled.textarea",
+                  "foldedComponentIds": Array [],
+                  "render": [Function],
+                  "styledComponentId": "sc-ifAKCX",
+                  "target": "textarea",
+                  "toString": [Function],
+                  "warnTooManyClasses": [Function],
+                  "withComponent": [Function],
+                }
+              }
+              forwardedRef={null}
               rows="5"
               type="text"
             >
               <textarea
-                className="glamor-6"
+                className="c3"
                 rows="5"
+                type="text"
               />
-            </glamorous(textarea)>
-          </label>
-        </glamorous(label)>
-      </Label>
-    </glamorous(Label)>
-  </TextArea>
-</glamorous(TextArea)>
+            </StyledComponent>
+          </styled.textarea>
+        </label>
+      </StyledComponent>
+    </styled.label>
+  </Label>
+</TextArea>
 `;
 
 exports[`Textarea matches wrapper snapshot: wrapper mount 1`] = `
-.glamor-1,
-[data-glamor-1] {
-  margin-bottom: 0;
-}
-
-.glamor-4,
-[data-glamor-4] {
+.c0 {
   display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
   flex-direction: column;
   box-sizing: border-box;
-  width: 100%;
   margin-bottom: 0;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
 }
 
-.glamor-4:after,
-[data-glamor-4]:after {
+.c0:after {
   content: '';
   display: table;
   clear: both;
 }
 
-.glamor-0,
-[data-glamor-0] {
-  font-family: "nta", Arial, sans-serif;
+.c1 {
+  font-family: "nta",Arial,sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  display: block;
-  clear: none;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.25;
   color: #0b0c0c;
+  display: block;
+  clear: none;
   padding-bottom: 2px;
   margin-bottom: 0;
 }
 
-.glamor-3,
-[data-glamor-3] {
+.c2 {
   box-sizing: border-box;
-  font-family: "nta", Arial, sans-serif;
+  font-family: "nta",Arial,sans-serif;
   font-weight: 400;
   text-transform: none;
   font-size: 16px;
@@ -451,91 +652,185 @@ exports[`Textarea matches wrapper snapshot: wrapper mount 1`] = `
   border: 2px solid #0b0c0c;
 }
 
-.glamor-3:focus,
-[data-glamor-3]:focus {
+.c2:focus {
   outline: 3px solid #ffbf47;
   outline-offset: 0;
 }
 
-@media only screen and (min-width: 641px) {
-  .glamor-1,
-  [data-glamor-1] {
+@media only screen and (min-width:641px) {
+  .c0 {
     margin-bottom: 0;
   }
 }
 
-@media only screen and (min-width: 641px) {
-  .glamor-4,
-  [data-glamor-4] {
-    max-width: 960px;
-    margin-bottom: 0;
+@media print {
+  .c1 {
+    font-size: 14px;
+    line-height: 1.15;
   }
 }
 
-@media only screen and (min-width: 641px) {
-  .glamor-0,
-  [data-glamor-0] {
+@media only screen and (min-width:641px) {
+  .c1 {
     font-size: 19px;
-    line-height: 1.3;
+    line-height: 1.3157894736842106;
+  }
+}
+
+@media print {
+  .c1 {
+    color: #000;
+  }
+}
+
+@media only screen and (min-width:641px) {
+  .c1 {
     margin-bottom: 0;
   }
 }
 
-@media only screen and (min-width: 641px) {
-  .glamor-3,
-  [data-glamor-3] {
+@media only screen and (min-width:641px) {
+  .c2 {
     font-size: 19px;
     line-height: 1.3;
     width: 75%;
   }
 }
 
-<glamorous(TextArea)>
-  <TextArea
-    className="glamor-1"
-    input={Object {}}
-    meta={Object {}}
+<TextArea
+  input={Object {}}
+  meta={Object {}}
+>
+  <Label
+    error={false}
   >
-    <glamorous(Label)
-      className="glamor-1"
+    <styled.label
+      error={false}
     >
-      <Label
-        className="glamor-1"
+      <StyledComponent
+        error={false}
+        forwardedComponent={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bdVaJa",
+              "isStatic": false,
+              "lastClassName": "c0",
+              "rules": Array [
+                "display: flex; flex-direction: column; box-sizing: border-box; :after {
+  content: ''; display: table; clear: both;
+}",
+                [Function],
+                [Function],
+              ],
+            },
+            "displayName": "styled.label",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-bdVaJa",
+            "target": "label",
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        forwardedRef={null}
       >
-        <glamorous(label)
-          className="glamor-1"
+        <label
+          className="c0"
         >
-          <label
-            className="glamor-4"
-          >
-            <glamorous(LabelText)>
-              <LabelText
-                className="glamor-1"
+          <LabelText>
+            <styled.span>
+              <StyledComponent
+                forwardedComponent={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": Array [],
+                    "componentStyle": ComponentStyle {
+                      "componentId": "sc-bwzfXH",
+                      "isStatic": false,
+                      "lastClassName": "c1",
+                      "rules": Array [
+                        "font-family: \\"nta\\", Arial, sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; @media print {
+  font-size: 14px; line-height: 1.15;
+} font-weight: 400; font-size: 16px; line-height: 1.25; @media only screen and (min-width: 641px) {
+  font-size: 19px; line-height: 1.3157894736842106;
+}",
+                        "color: #0b0c0c; @media print {
+  color: #000;
+}",
+                        "display: block; clear: none; padding-bottom: 2px;",
+                        [Function],
+                        [Function],
+                      ],
+                    },
+                    "displayName": "styled.span",
+                    "foldedComponentIds": Array [],
+                    "render": [Function],
+                    "styledComponentId": "sc-bwzfXH",
+                    "target": "span",
+                    "toString": [Function],
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
               >
-                <glamorous(span)
-                  className="glamor-1"
+                <span
+                  className="c1"
                 >
-                  <span
-                    className="glamor-0"
-                  >
-                    example
-                  </span>
-                </glamorous(span)>
-              </LabelText>
-            </glamorous(LabelText)>
-            <glamorous(textarea)
+                  example
+                </span>
+              </StyledComponent>
+            </styled.span>
+          </LabelText>
+          <styled.textarea
+            rows="5"
+            type="text"
+          >
+            <StyledComponent
+              forwardedComponent={
+                Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": Array [],
+                  "componentStyle": ComponentStyle {
+                    "componentId": "sc-ifAKCX",
+                    "isStatic": false,
+                    "lastClassName": "c2",
+                    "rules": Array [
+                      "box-sizing: border-box; font-family: \\"nta\\", Arial, sans-serif; font-weight: 400; text-transform: none; font-size: 16px; line-height: 1.25; @media only screen and (min-width: 641px) {
+  font-size: 19px; line-height: 1.3; width: 75%;
+} width: 100%; padding: 5px 4px 4px; border: 2px solid #0b0c0c; :focus {
+  outline: 3px solid #ffbf47; outline-offset: 0;
+}",
+                      [Function],
+                    ],
+                  },
+                  "displayName": "styled.textarea",
+                  "foldedComponentIds": Array [],
+                  "render": [Function],
+                  "styledComponentId": "sc-ifAKCX",
+                  "target": "textarea",
+                  "toString": [Function],
+                  "warnTooManyClasses": [Function],
+                  "withComponent": [Function],
+                }
+              }
+              forwardedRef={null}
               rows="5"
               type="text"
             >
               <textarea
-                className="glamor-3"
+                className="c2"
                 rows="5"
+                type="text"
               />
-            </glamorous(textarea)>
-          </label>
-        </glamorous(label)>
-      </Label>
-    </glamorous(Label)>
-  </TextArea>
-</glamorous(TextArea)>
+            </StyledComponent>
+          </styled.textarea>
+        </label>
+      </StyledComponent>
+    </styled.label>
+  </Label>
+</TextArea>
 `;

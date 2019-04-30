@@ -1,43 +1,56 @@
-// https://govuk-elements.herokuapp.com/typography/#typography-headings
-// https://github.com/alphagov/govuk_frontend_toolkit/blob/master/stylesheets/_typography.scss
-// https://github.com/alphagov/govuk-frontend/blob/master/src/globals/scss/core/_typography.scss
-// https://github.com/alphagov/govuk_elements/blob/master/packages/govuk-elements-sass/public/sass/elements/_elements-typography.scss
-
-import glamorous from 'glamorous';
+import styled from 'styled-components';
 import React, { createElement } from 'react';
 import PropTypes from 'prop-types';
-import {
-  MEDIA_QUERIES,
-  NTA_LIGHT,
-  LEVEL_SIZE,
-  FONT_SIZES,
-  LEVEL_TAG,
-} from '@govuk-react/constants';
-import { withWhiteSpace } from '@govuk-react/hoc';
+import { HEADING_SIZES, LEVEL_SIZE, LEVEL_TAG, MEDIA_QUERIES, TYPOGRAPHY_SCALE } from '@govuk-react/constants';
+import { spacing, typography } from '@govuk-react/lib';
+import { deprecate } from '@govuk-react/hoc';
 
-const GHeader = glamorous(({ level, children, ...props }) =>
-  createElement(LEVEL_TAG[level], props, children))(
-  {
-    fontFamily: NTA_LIGHT,
-    fontWeight: 'bold',
-    margin: 0,
+// use `size` only with string for XLARGE, SMALL etc and number for px size
+// so if `size` is a string, we find a numeric size based off `HEADING_SIZES`
+// but if `size` is a number we just send through that number
+
+const StyledHeader = styled(({ level, children, size, ...props }) => createElement(LEVEL_TAG[level], props, children))(
+  typography.textColour,
+  ({ level, size = LEVEL_SIZE[level] }) => {
+    const actualSize = Number.isNaN(Number(size)) ? HEADING_SIZES[size] : size;
+
+    if (!actualSize) {
+      throw Error(`Unknown size ${size} used for header.`);
+    }
+
+    return Object.assign({}, typography.font({ size: actualSize, weight: 'bold' }));
   },
-  ({ level, size = LEVEL_SIZE[level] }) => ({
-    fontSize: FONT_SIZES[size].mobile.fontSize,
-    lineHeight: FONT_SIZES[size].mobile.lineHeight,
-    marginBottom: FONT_SIZES[size].mobile.spacing,
-    [MEDIA_QUERIES.LARGESCREEN]: {
-      fontSize: FONT_SIZES[size].tablet.fontSize,
-      lineHeight: FONT_SIZES[size].tablet.lineHeight,
-      marginBottom: FONT_SIZES[size].tablet.spacing,
-    },
-    [MEDIA_QUERIES.PRINT]: {
-      fontSize: FONT_SIZES[size].print.fontSize,
-    },
-  }),
+  {
+    display: 'block',
+    marginTop: 0,
+  },
+  ({ level, size = LEVEL_SIZE[level] }) => {
+    const actualSize = Number.isNaN(Number(size)) ? HEADING_SIZES[size] : size;
+    const scaleInfo = TYPOGRAPHY_SCALE[actualSize];
+
+    return Object.assign(
+      {},
+      {
+        marginBottom: scaleInfo.mobile.spacing,
+        [MEDIA_QUERIES.TABLET]: {
+          marginBottom: scaleInfo.tablet.spacing,
+        },
+      }
+    );
+  },
+  spacing.withWhiteSpace()
 );
 
-const Header = props => <GHeader {...props} />;
+/**
+ *
+ * ### Usage
+ *
+ * This component is DEPRECATED.
+ *
+ * Please use the `Heading` component instead.
+ *
+ */
+const Header = props => <StyledHeader {...props} />;
 
 Header.defaultProps = {
   level: 1,
@@ -45,10 +58,19 @@ Header.defaultProps = {
 };
 
 Header.propTypes = {
+  /**
+   * Semantic heading level value between 1 and 6
+   */
   level: PropTypes.number,
-  size: PropTypes.oneOf(Object.keys(FONT_SIZES)),
+  /**
+   * Visual size level, accepts:
+   *    `XLARGE`, `LARGE`, `MEDIUM`, `SMALL`, `XL`, `L`, `M`, `S`
+   *    or a numeric size that fits in the GDS font scale list
+   */
+  size: PropTypes.oneOf([...Object.keys(HEADING_SIZES), ...Object.keys(TYPOGRAPHY_SCALE)]),
 };
 
-export default withWhiteSpace({ marginBottom: 0 })(Header);
+export default deprecate(Header, 'please use the Heading component instead');
 
+export { Header as DocumentedHeader };
 export { H1, H2, H3, H4, H5, H6 } from './presets';

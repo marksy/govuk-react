@@ -5,11 +5,9 @@ import asPaginationItem from '.';
 
 const PaginationTag = asPaginationItem('a');
 
-const wrapper = (
-  <PaginationTag href="https://example.com">Example</PaginationTag>
-);
+const wrapper = <PaginationTag href="https://example.com">Example</PaginationTag>;
 
-describe(asPaginationItem, () => {
+describe('asPaginationItem', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(wrapper, div);
@@ -25,19 +23,16 @@ describe(asPaginationItem, () => {
         <PaginationTag href="https://example.com" previousPage>
           Example
         </PaginationTag>
-        <PaginationTag
-          href="https://example.com"
-          pageTitle="This is an example"
-        >
+        <PaginationTag href="https://example.com" pageTitle="This is an example">
           Example
         </PaginationTag>
       </div>,
-      div,
+      div
     );
   });
 
   it('returns a component', () => {
-    expect(shallow(wrapper).html().toBeTruthy);
+    expect(shallow(wrapper).html()).toBeTruthy();
   });
 
   it('matches wrapper snapshot', () => {

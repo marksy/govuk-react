@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { mount } from 'enzyme';
-import FileUpload from './';
+
+import FileUpload from '.';
 
 describe('FileUpload', () => {
   const example = 'example';

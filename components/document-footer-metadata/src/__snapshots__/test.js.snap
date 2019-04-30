@@ -1,60 +1,70 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ThemedComponent matches snapshot: enzyme.mount 1`] = `
-.glamor-4,
-[data-glamor-4] {
-  margin-bottom: 0;
-}
-
-.glamor-0,
-[data-glamor-0] {
-  font-family: "nta", Arial, sans-serif;
-}
-
-.glamor-3,
-[data-glamor-3] {
-  margin: 0;
-  padding: 0;
-  padding-left: 0;
-  font-family: "nta", Arial, sans-serif;
+exports[`DocumentFooterMetadata matches snapshot: enzyme.mount 1`] = `
+.c2 {
+  font-family: "nta",Arial,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-weight: 400;
-  text-transform: none;
-  font-size: 14px;
-  line-height: 1.1428571429;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #0b0c0c;
+  margin-top: 0;
+  margin-bottom: 15px;
   list-style-type: none;
-  margin-left: 0;
-  margin-bottom: 0;
+  padding-left: 0;
 }
 
-.glamor-1,
-[data-glamor-1] {
+.c2 .c1 {
+  margin-top: 10px;
+}
+
+.c2 > .c4 {
+  margin-bottom: 5px;
+}
+
+.c0 {
+  font-family: "nta",Arial,sans-serif;
+}
+
+.c3 {
   font-size: 24px;
   font-weight: 700;
   line-height: 1.25;
 }
 
-.glamor-1> a,
-[data-glamor-1]> a {
+.c3 > a {
+  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-@media only screen and (min-width: 641px) {
-  .glamor-4,
-  [data-glamor-4] {
-    margin-bottom: 0;
+@media print {
+  .c2 {
+    font-size: 14px;
+    line-height: 1.15;
   }
 }
 
-@media only screen and (min-width: 641px) {
-  .glamor-3,
-  [data-glamor-3] {
-    font-size: 16px;
-    line-height: 1.25;
-    margin-bottom: 0;
+@media only screen and (min-width:641px) {
+  .c2 {
+    font-size: 19px;
+    line-height: 1.3157894736842106;
   }
 }
 
-<glamorous(DocumentFooterMetadata)
+@media print {
+  .c2 {
+    color: #000;
+  }
+}
+
+@media only screen and (min-width:641px) {
+  .c2 {
+    margin-bottom: 20px;
+  }
+}
+
+<DocumentFooterMetadata
   partOf={
     Array [
       "example",
@@ -62,80 +72,277 @@ exports[`ThemedComponent matches snapshot: enzyme.mount 1`] = `
     ]
   }
 >
-  <DocumentFooterMetadata
-    className="glamor-4"
-    partOf={
-      Array [
-        "example",
-        "exampleexample",
-      ]
-    }
-  >
-    <div>
-      <glamorous(div)>
-        <div
-          className="glamor-0"
-        />
-      </glamorous(div)>
-      <glamorous(div)>
-        <div
-          className="glamor-0"
-        >
-          <div>
-            <p
-              style={
-                Object {
-                  "marginBottom": 0,
-                }
+  <styled.div>
+    <StyledComponent
+      forwardedComponent={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-htpNat",
+            "isStatic": false,
+            "lastClassName": "c0",
+            "rules": Array [
+              "font-family: \\"nta\\", Arial, sans-serif;",
+              [Function],
+            ],
+          },
+          "displayName": "styled.div",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-htpNat",
+          "target": "div",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
+    >
+      <div
+        className="c0"
+      >
+        <styled.div>
+          <StyledComponent
+            forwardedComponent={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-htpNat",
+                  "isStatic": false,
+                  "lastClassName": "c0",
+                  "rules": Array [
+                    "font-family: \\"nta\\", Arial, sans-serif;",
+                    [Function],
+                  ],
+                },
+                "displayName": "styled.div",
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "sc-htpNat",
+                "target": "div",
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
               }
+            }
+            forwardedRef={null}
+          >
+            <div
+              className="c0"
+            />
+          </StyledComponent>
+        </styled.div>
+        <styled.div>
+          <StyledComponent
+            forwardedComponent={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-htpNat",
+                  "isStatic": false,
+                  "lastClassName": "c0",
+                  "rules": Array [
+                    "font-family: \\"nta\\", Arial, sans-serif;",
+                    [Function],
+                  ],
+                },
+                "displayName": "styled.div",
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "sc-htpNat",
+                "target": "div",
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            forwardedRef={null}
+          >
+            <div
+              className="c0"
             >
-              Part of:
-            </p>
-            <glamorous(UnorderedList)
-              listStyleType="none"
-            >
-              <UnorderedList
-                className="glamor-4"
-                listStyleType="none"
-              >
-                <glamorous(ul)
-                  className="glamor-4"
+              <div>
+                <p
+                  style={
+                    Object {
+                      "marginBottom": 0,
+                    }
+                  }
+                >
+                  Part of:
+                </p>
+                <UnorderedList
                   listStyleType="none"
                 >
-                  <ul
-                    className="glamor-3"
+                  <styled.ol
+                    as="ul"
+                    listStyleType="none"
                   >
-                    <glamorous(li)
-                      key="0"
+                    <StyledComponent
+                      as="ul"
+                      forwardedComponent={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "attrs": Array [],
+                          "componentStyle": ComponentStyle {
+                            "componentId": "c1",
+                            "isStatic": false,
+                            "lastClassName": "c2",
+                            "rules": Array [
+                              "font-family: \\"nta\\", Arial, sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; @media print {
+  font-size: 14px; line-height: 1.15;
+} font-weight: 400; font-size: 16px; line-height: 1.25; @media only screen and (min-width: 641px) {
+  font-size: 19px; line-height: 1.3157894736842106;
+}",
+                              "color: #0b0c0c; @media print {
+  color: #000;
+}",
+                              "margin-top: 0; & & {
+  margin-top: 10px;
+}",
+                              [Function],
+                              [Function],
+                            ],
+                          },
+                          "defaultProps": Object {
+                            "listStyleType": undefined,
+                          },
+                          "displayName": "styled.ol",
+                          "foldedComponentIds": Array [],
+                          "propTypes": undefined,
+                          "render": [Function],
+                          "styledComponentId": "c1",
+                          "target": "ol",
+                          "toString": [Function],
+                          "warnTooManyClasses": [Function],
+                          "withComponent": [Function],
+                        }
+                      }
+                      forwardedRef={null}
+                      listStyleType="none"
                     >
-                      <li
-                        className="glamor-1"
+                      <ul
+                        className="c1 c2"
                       >
-                        example
-                      </li>
-                    </glamorous(li)>
-                    <glamorous(li)
-                      key="1"
-                    >
-                      <li
-                        className="glamor-1"
-                      >
-                        exampleexample
-                      </li>
-                    </glamorous(li)>
-                  </ul>
-                </glamorous(ul)>
-              </UnorderedList>
-            </glamorous(UnorderedList)>
-          </div>
-        </div>
-      </glamorous(div)>
-      <glamorous(div)>
-        <div
-          className="glamor-0"
-        />
-      </glamorous(div)>
-    </div>
-  </DocumentFooterMetadata>
-</glamorous(DocumentFooterMetadata)>
+                        <styled.li
+                          key="0"
+                        >
+                          <StyledComponent
+                            forwardedComponent={
+                              Object {
+                                "$$typeof": Symbol(react.forward_ref),
+                                "attrs": Array [],
+                                "componentStyle": ComponentStyle {
+                                  "componentId": "sc-bxivhb",
+                                  "isStatic": true,
+                                  "lastClassName": "c3",
+                                  "rules": Array [
+                                    "font-size: 24px; font-weight: 700; line-height: 1.25; > a {
+  text-decoration: none;
+}",
+                                  ],
+                                },
+                                "displayName": "styled.li",
+                                "foldedComponentIds": Array [],
+                                "render": [Function],
+                                "styledComponentId": "sc-bxivhb",
+                                "target": "li",
+                                "toString": [Function],
+                                "warnTooManyClasses": [Function],
+                                "withComponent": [Function],
+                              }
+                            }
+                            forwardedRef={null}
+                          >
+                            <li
+                              className="c3"
+                            >
+                              example
+                            </li>
+                          </StyledComponent>
+                        </styled.li>
+                        <styled.li
+                          key="1"
+                        >
+                          <StyledComponent
+                            forwardedComponent={
+                              Object {
+                                "$$typeof": Symbol(react.forward_ref),
+                                "attrs": Array [],
+                                "componentStyle": ComponentStyle {
+                                  "componentId": "sc-bxivhb",
+                                  "isStatic": true,
+                                  "lastClassName": "c3",
+                                  "rules": Array [
+                                    "font-size: 24px; font-weight: 700; line-height: 1.25; > a {
+  text-decoration: none;
+}",
+                                  ],
+                                },
+                                "displayName": "styled.li",
+                                "foldedComponentIds": Array [],
+                                "render": [Function],
+                                "styledComponentId": "sc-bxivhb",
+                                "target": "li",
+                                "toString": [Function],
+                                "warnTooManyClasses": [Function],
+                                "withComponent": [Function],
+                              }
+                            }
+                            forwardedRef={null}
+                          >
+                            <li
+                              className="c3"
+                            >
+                              exampleexample
+                            </li>
+                          </StyledComponent>
+                        </styled.li>
+                      </ul>
+                    </StyledComponent>
+                  </styled.ol>
+                </UnorderedList>
+              </div>
+            </div>
+          </StyledComponent>
+        </styled.div>
+        <styled.div>
+          <StyledComponent
+            forwardedComponent={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-htpNat",
+                  "isStatic": false,
+                  "lastClassName": "c0",
+                  "rules": Array [
+                    "font-family: \\"nta\\", Arial, sans-serif;",
+                    [Function],
+                  ],
+                },
+                "displayName": "styled.div",
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "sc-htpNat",
+                "target": "div",
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            forwardedRef={null}
+          >
+            <div
+              className="c0"
+            />
+          </StyledComponent>
+        </styled.div>
+      </div>
+    </StyledComponent>
+  </styled.div>
+</DocumentFooterMetadata>
 `;

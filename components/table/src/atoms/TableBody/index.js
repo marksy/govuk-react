@@ -1,7 +1,7 @@
-// https://govuk-elements.herokuapp.com/data/
+// https://github.com/alphagov/govuk-frontend/blob/master/src/components/table/_table.scss
 
-import glamorous from 'glamorous';
+import styled from 'styled-components';
 
-const TableBody = glamorous.tbody();
+const TableBody = styled('tbody')({});
 
 export default TableBody;

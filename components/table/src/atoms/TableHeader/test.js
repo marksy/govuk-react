@@ -1,12 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import TableHeader from './';
+import { mount } from 'enzyme';
 
-const example = <table><TableHeader><tr><th>hi</th></tr></TableHeader></table>;
+import TableHeader from '.';
 
-describe(TableHeader, () => {
+const example = (
+  <table>
+    <TableHeader>
+      <tr>
+        <th>hi</th>
+      </tr>
+    </TableHeader>
+  </table>
+);
+
+describe('TableHeader', () => {
   it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(example, div);
+    mount(example);
   });
 });

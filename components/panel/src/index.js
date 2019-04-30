@@ -1,68 +1,90 @@
-// https://github.com/alphagov/govuk-frontend/tree/master/src/components/panel
 import React from 'react';
-import glamorous from 'glamorous';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
-
 import { TURQUOISE, WHITE } from 'govuk-colours';
-import { withWhiteSpace } from '@govuk-react/hoc';
-import {
-  MEDIA_QUERIES,
-  NTA_LIGHT,
-  SPACING,
-} from '@govuk-react/constants';
+import { spacing, typography } from '@govuk-react/lib';
+import { BORDER_WIDTH, MEDIA_QUERIES, SPACING_POINTS } from '@govuk-react/constants';
+import { stripUnit } from 'polished';
 
-const PanelInner = glamorous.div({
-  backgroundColor: TURQUOISE,
-  color: WHITE,
-  padding: SPACING.SCALE_5,
-});
+const RAW_BORDER_WIDTH = stripUnit(BORDER_WIDTH);
 
-// TODO use standard font constants
-const PanelTitle = glamorous.h2({
-  fontFamily: NTA_LIGHT,
-  fontWeight: 'bold',
-  WebkitFontSmoothing: 'antialiased',
-  fontSize: '32px',
-  lineHeight: '35px',
-  marginTop: 0,
-  textAlign: 'center',
-  [MEDIA_QUERIES.LARGESCREEN]: {
-    fontSize: '48px',
-    lineHeight: '50px',
+const StyledPanel = styled('div')(
+  typography.font({ size: 19 }),
+  {
+    boxSizing: 'border-box',
+
+    marginBottom: SPACING_POINTS[3],
+    // NB govuk-frontend has this element styled tablet-first
+    padding: SPACING_POINTS[6] - RAW_BORDER_WIDTH,
+
+    border: `${BORDER_WIDTH} solid transparent`,
+
+    textAlign: 'center',
+
+    // NB govuk-frontend has this media query as an `until tablet` (thus for mobile)
+    [MEDIA_QUERIES.TABLET]: {
+      padding: SPACING_POINTS[7] - RAW_BORDER_WIDTH,
+    },
+
+    color: WHITE,
+    background: TURQUOISE,
   },
-});
+  spacing.withWhiteSpace()
+);
 
-// TODO use standard font constants
-const PanelBody = glamorous.div({
-  fontFamily: NTA_LIGHT,
-  fontSize: '24px',
-  fontWeight: 400,
-  lineHeight: '25px',
-  marginTop: SPACING.SCALE_3,
-  marginBottom: SPACING.SCALE_2,
-  textAlign: 'center',
-  WebkitFontSmoothing: 'antialiased',
-  [MEDIA_QUERIES.LARGESCREEN]: {
-    fontSize: '36px',
-    lineHeight: '40px',
+// NB govuk-frontend allows for the headingLevel to change, but defaults to h1
+// we're not supporting headingLevel at this time
+const StyledTitle = styled('h1')(
+  {
+    marginTop: 0,
+    marginBottom: SPACING_POINTS[6],
+
+    ':last-child': {
+      marginBottom: 0,
+    },
   },
-});
+  typography.font({ size: 48, weight: 'bold' })
+);
 
-const Panel = ({ panelTitle, panelBody, className }) => (
-  <PanelInner className={className}>
-    <PanelTitle>{panelTitle}</PanelTitle>
-    <PanelBody>{panelBody}</PanelBody>
-  </PanelInner>
+const StyledBody = styled('div')(typography.font({ size: 36 }));
+
+/**
+ *
+ * ### Usage
+ *
+ * Simple
+ * ```jsx
+ * <Panel title="Application complete" />
+ * ```
+ *
+ * Panel with header and HTML body
+ * ```jsx
+ * <Panel title="Application complete">
+ *   Your reference number<br />
+ *   <strong>HDJ2123F</strong>
+ * </Panel>
+ * ```
+ *
+ * ### References:
+ * - https://github.com/alphagov/govuk-frontend/tree/master/src/components/panel
+ *
+ */
+
+const Panel = ({ title, children, ...props }) => (
+  <StyledPanel {...props}>
+    <StyledTitle>{title}</StyledTitle>
+    {children && <StyledBody>{children}</StyledBody>}
+  </StyledPanel>
 );
 Panel.defaultProps = {
-  panelBody: undefined,
-  className: undefined,
+  children: undefined,
 };
 
 Panel.propTypes = {
-  panelTitle: PropTypes.string.isRequired,
-  panelBody: PropTypes.string,
-  className: PropTypes.string,
+  /** Panel title text */
+  title: PropTypes.string.isRequired,
+  /** Panel body text */
+  children: PropTypes.node,
 };
 
-export default withWhiteSpace({ marginBottom: 3 })(Panel);
+export default Panel;

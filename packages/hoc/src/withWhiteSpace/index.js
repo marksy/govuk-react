@@ -1,20 +1,21 @@
-import PropTypes from 'prop-types';
-import glamorous from 'glamorous';
-import { SPACING_MAP, SPACING_MAP_INDEX, MEDIA_QUERIES } from '@govuk-react/constants';
+import styled from 'styled-components';
+import { spacing } from '@govuk-react/lib';
 
-const withWhiteSpace = config => (Component) => {
-  const StyledHoc = glamorous(Component)(({
-    mb: marginBottom = config.marginBottom,
-  }) => ({
-    marginBottom: marginBottom ? SPACING_MAP[marginBottom].mobile : 0,
-    [MEDIA_QUERIES.LARGESCREEN]: {
-      marginBottom: marginBottom ? SPACING_MAP[marginBottom].tablet : 0,
-    },
-  }));
+import deprecate from '../deprecate';
 
-  // `mb` (Margin Bottom) prop name comes from the naming convention used by https://github.com/jxnblk/grid-styled
+// NB withWhiteSpace HOC is DEPRECATED
+// Please use `spacing.withWhiteSpace(config)` instead in styled components
+
+const withWhiteSpace = config => Component => {
+  const StyledHoc = styled(
+    deprecate(
+      Component,
+      '(use of withWhiteSpace HOC - Please use `spacing.withWhiteSpace(config)` instead in styled components)'
+    )
+  )(spacing.withWhiteSpace(config));
+
   StyledHoc.propTypes = {
-    mb: PropTypes.oneOf(SPACING_MAP_INDEX),
+    ...spacing.withWhiteSpace.propTypes,
   };
 
   return StyledHoc;

@@ -12,22 +12,16 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import glamorous from 'glamorous';
+import styled from 'styled-components';
 import { ERROR_COLOUR } from 'govuk-colours';
-
 import LabelText from '@govuk-react/label-text';
 import ErrorText from '@govuk-react/error-text';
 import HintText from '@govuk-react/hint-text';
 
-import {
-  BORDER_WIDTH_MOBILE,
-  MEDIA_QUERIES,
-  SITE_WIDTH,
-  SPACING,
-} from '@govuk-react/constants';
-import { withWhiteSpace } from '@govuk-react/hoc';
+import { BORDER_WIDTH_MOBILE, SPACING } from '@govuk-react/constants';
+import { spacing } from '@govuk-react/lib';
 
-const FieldSet = glamorous.div(
+const StyledFieldset = styled('div')(
   {
     padding: 0,
     margin: 0,
@@ -39,33 +33,49 @@ const FieldSet = glamorous.div(
       display: 'table',
       clear: 'both',
     },
-    [MEDIA_QUERIES.LARGESCREEN]: {
-      maxWidth: SITE_WIDTH,
-    },
   },
   ({ error }) => ({
-    borderLeft: error
-      ? `${BORDER_WIDTH_MOBILE} solid ${ERROR_COLOUR}`
-      : undefined,
+    borderLeft: error ? `${BORDER_WIDTH_MOBILE} solid ${ERROR_COLOUR}` : undefined,
     marginRight: error ? SPACING.SCALE_3 : undefined,
     paddingLeft: error ? SPACING.SCALE_2 : undefined,
   }),
+  spacing.withWhiteSpace({ marginBottom: 0 })
 );
 
-const MultiChoice = ({
-  meta, label, children, hint, className,
-}) => (
-  <FieldSet className={className} error={meta.touched && meta.error}>
+/**
+ *
+ * ### Usage
+ *
+ * Simple
+ * ```jsx
+ * import Radio from '@govuk-react/radio';
+ *
+ * <MultiChoice label="example">
+ *    <Radio name="group1" inline>
+ *      Yes
+ *    </Radio>
+ *    <Radio name="group1" inline>
+ *      No
+ *    </Radio>
+ * </MultiChoice>
+ * ```
+ *
+ * ### References:
+ * - https://govuk-elements.herokuapp.com/errors/
+ * - https://govuk-elements.herokuapp.com/errors/example-form-validation-single-question-radio
+ *
+ */
+const MultiChoice = ({ meta, label, children, hint, ...props }) => (
+  <StyledFieldset error={meta.touched && meta.error} {...props}>
     <LabelText>{label}</LabelText>
     {hint && <HintText>{hint}</HintText>}
     {meta.touched && meta.error && <ErrorText>{meta.error}</ErrorText>}
     {children}
-  </FieldSet>
+  </StyledFieldset>
 );
 
 MultiChoice.defaultProps = {
   hint: undefined,
-  className: undefined,
   meta: {},
 };
 
@@ -75,7 +85,7 @@ MultiChoice.propTypes = {
     dirty: PropTypes.bool,
     dirtySinceLastSubmit: PropTypes.bool,
     error: PropTypes.any,
-    initial: PropTypes.bool,
+    initial: PropTypes.any,
     invalid: PropTypes.bool,
     pristine: PropTypes.bool,
     submitError: PropTypes.any,
@@ -88,7 +98,6 @@ MultiChoice.propTypes = {
   label: PropTypes.node.isRequired,
   children: PropTypes.node.isRequired,
   hint: PropTypes.string,
-  className: PropTypes.string,
 };
 
-export default withWhiteSpace({ marginBottom: 0 })(MultiChoice);
+export default MultiChoice;

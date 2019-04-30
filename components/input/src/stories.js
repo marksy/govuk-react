@@ -1,13 +1,12 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { ORANGE } from 'govuk-colours';
+import { withDocsCustom } from '@govuk-react/storybook-components';
 
 import Input from '.';
+import ReadMe from '../README.md';
 
-storiesOf('Input', module).add('Component default', () => (
-  <Input type="text" />
-));
+const stories = storiesOf('Form/Input', module);
 
-storiesOf('Input', module).add('Custom error colour', () => (
-  <Input type="text" errorColor={ORANGE} error="example" />
-));
+stories.addDecorator(withDocsCustom(ReadMe));
+
+stories.add('Component default', () => <Input type="text" />);

@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { mount } from 'enzyme';
-import Textarea from './';
+
+import Textarea from '.';
 
 describe('Textarea', () => {
   let props;

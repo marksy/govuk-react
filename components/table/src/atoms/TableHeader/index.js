@@ -1,11 +1,7 @@
-// https://govuk-elements.herokuapp.com/data/
+// https://github.com/alphagov/govuk-frontend/blob/master/src/components/table/_table.scss
 
-import glamorous from 'glamorous';
+import styled from 'styled-components';
 
-const TableHeader = glamorous.thead({
-  ' th': {
-    fontWeight: 700,
-  },
-});
+const TableHeader = styled('thead')({});
 
 export default TableHeader;

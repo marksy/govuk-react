@@ -7,31 +7,20 @@ import asPaginationItem from '.';
 const PaginationTag = asPaginationItem('a');
 const PaginationLink = asPaginationItem(Link);
 
-storiesOf('asPaginationItem', module).add(
-  'asPaginationItem passing in anchor',
-  () => (
-    <PaginationTag href="https://cats.org">
-      asPaginationItem anchor example
-    </PaginationTag>
-  ),
-);
+const stories = storiesOf('Utilities/asPaginationItem', module);
 
-storiesOf('asPaginationItem', module).add(
-  'asPaginationItem passing in anchor target=blank',
-  () => (
-    <PaginationTag href="https://cats.org" target="_blank">
-      asPaginationItem anchor example
-    </PaginationTag>
-  ),
-);
+stories.add('asPaginationItem passing in anchor', () => (
+  <PaginationTag href="https://cats.org">asPaginationItem anchor example</PaginationTag>
+));
 
-storiesOf('asPaginationItem', module).add(
-  'asPaginationItem passing in React Router Link',
-  () => (
-    <BrowserRouter>
-      <PaginationLink to="https://cats.com">
-        asPaginationItem Link example
-      </PaginationLink>
-    </BrowserRouter>
-  ),
-);
+stories.add('asPaginationItem passing in anchor target=blank', () => (
+  <PaginationTag href="https://cats.org" target="_blank">
+    asPaginationItem anchor example
+  </PaginationTag>
+));
+
+stories.add('asPaginationItem passing in React Router Link', () => (
+  <BrowserRouter>
+    <PaginationLink to="https://cats.com">asPaginationItem Link example</PaginationLink>
+  </BrowserRouter>
+));

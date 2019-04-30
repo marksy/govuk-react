@@ -1,25 +1,53 @@
-// https://github.com/alphagov/govuk_frontend_toolkit/blob/master/stylesheets/_grid_layout.scss
-// https://github.com/alphagov/govuk_elements/blob/master/assets/sass/elements/_layout.scss
-
 import React from 'react';
 import PropTypes from 'prop-types';
-import glamorous from 'glamorous';
-import { MEDIA_QUERIES, SITE_WIDTH, SPACING } from '@govuk-react/constants';
+import styled from 'styled-components';
+import { GUTTER_HALF, MEDIA_QUERIES } from '@govuk-react/constants';
+import { spacing } from '@govuk-react/lib';
 
-const GridRowInner = glamorous.div({
-  width: '100%',
-  clear: 'left',
-  margin: `0 0 ${SPACING.SCALE_3}`,
-  [MEDIA_QUERIES.LARGESCREEN]: {
+const StyledRow = styled('div')(
+  {
     display: 'flex',
-    maxWidth: SITE_WIDTH,
-    marginBottom: SPACING.SCALE_5,
+    flexDirection: 'column',
+    margin: `0 -${GUTTER_HALF}`,
+    [MEDIA_QUERIES.LARGESCREEN]: {
+      flexDirection: 'row',
+    },
   },
-});
+  spacing.withWhiteSpace()
+);
 
-const GridRow = ({ children }) => <GridRowInner>{children}</GridRowInner>;
+/**
+ *
+ * ### Usage
+ *
+ * Example
+ * * https://codesandbox.io/s/x917knwm4z
+ *
+ * Simple
+ * ```jsx
+ * import GridRow from '@govuk-react/grid-row';
+ * import GridCol from '@govuk-react/grid-col';
+ *
+ * <Fragment>
+ *   <GridRow>
+ *     <GridCol>
+ *       ...
+ *     </GridCol>
+ *   </GridRow>
+ * </Fragment>
+ * ```
+ *
+ * ### References:
+ * - https://github.com/alphagov/govuk_frontend_toolkit/blob/master/stylesheets/_grid_layout.scss
+ * - https://github.com/alphagov/govuk_elements/blob/master/assets/sass/elements/_layout.scss
+ *
+ */
+const GridRow = props => <StyledRow {...props} />;
 
 GridRow.propTypes = {
+  /**
+   * One or more GridCol nodes
+   */
   children: PropTypes.node.isRequired,
 };
 

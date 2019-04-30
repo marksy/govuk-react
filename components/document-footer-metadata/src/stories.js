@@ -1,25 +1,23 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { asAnchor } from '@govuk-react/hoc';
+import Link from '@govuk-react/link';
+import { withDocsCustom } from '@govuk-react/storybook-components';
 
 import DocumentFooterMetadata from '.';
+import ReadMe from '../README.md';
 
-const AnchorTag = asAnchor('a');
-
-const fromData = [
-  <AnchorTag href="/government/organisations/ministry-of-defence">Ministry of Defence</AnchorTag>,
-];
+const fromData = [<Link href="/government/organisations/ministry-of-defence">Ministry of Defence</Link>];
 
 const partOfData = [
-  <AnchorTag href="/government/topics/energy">Energy</AnchorTag>,
-  <AnchorTag href="/government/topics/environment">Environment</AnchorTag>,
+  <Link href="/government/topics/energy">Energy</Link>,
+  <Link href="/government/topics/environment">Environment</Link>,
 ];
 
 const otherData = [
   {
     id: 0,
     title: 'Consultation type',
-    content: <AnchorTag href="/government/publications">Open</AnchorTag>,
+    content: <Link href="/government/publications">Open</Link>,
   },
   {
     id: 1,
@@ -38,22 +36,13 @@ const otherData = [
   },
 ];
 
-storiesOf('Document Footer Metadata', module).add('DFM From example', () => (
-  <DocumentFooterMetadata
-    from={fromData}
-  />
-));
+const stories = storiesOf('Typography/Document Footer Metadata', module);
+const examples = storiesOf('Typography/Document Footer Metadata/Examples', module);
 
-storiesOf('Document Footer Metadata', module).add('DFM From & part of example', () => (
-  <DocumentFooterMetadata
-    from={fromData}
-    partOf={partOfData}
-  />
-));
+stories.addDecorator(withDocsCustom(ReadMe));
 
-storiesOf('Document Footer Metadata', module).add('DFM From & other data example', () => (
-  <DocumentFooterMetadata
-    from={fromData}
-    other={otherData}
-  />
-));
+stories.add('Component default', () => <DocumentFooterMetadata from={fromData} />);
+
+examples.add('DFM From & part of example', () => <DocumentFooterMetadata from={fromData} partOf={partOfData} />);
+
+examples.add('DFM From & other data example', () => <DocumentFooterMetadata from={fromData} other={otherData} />);

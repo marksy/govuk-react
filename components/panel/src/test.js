@@ -1,33 +1,24 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { mount } from 'enzyme';
 
-import Panel from './';
+import Panel from '.';
 
 describe('Panel', () => {
-  let props;
-  const titleExample = 'Example';
-  const bodyExample = 'body';
-  const wrapper = <Panel panelTitle={titleExample} panelBody={bodyExample} />;
+  it('should render a panel without a body body', () => {
+    const wrapper = mount(<Panel title="Example" />);
 
-  beforeEach(() => {
-    props = {
-      titleExample,
-      bodyExample,
-    };
+    expect(wrapper.text().includes('Example')).toBe(true);
   });
 
-  it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(wrapper, div);
-  });
+  it('should render a panel body that is a string', () => {
+    const wrapper = mount(<Panel title="Example">body</Panel>);
 
-  it('passes `props.children` to the rendered `wrapper` as `children`', () => {
-    expect(wrapper.props.panelTitle).toBe(props.titleExample);
-    expect(wrapper.props.panelBody).toBe(props.bodyExample);
+    expect(wrapper.text().includes('body')).toBe(true);
   });
 
   it('matches wrapper snapshot', () => {
-    expect(mount(wrapper)).toMatchSnapshot('wrapper mount');
+    const wrapper = mount(<Panel title="Example">body</Panel>);
+
+    expect(wrapper).toMatchSnapshot('wrapper mount');
   });
 });

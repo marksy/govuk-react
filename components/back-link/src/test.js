@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 import { mount } from 'enzyme';
 import sinon from 'sinon';
 
-import BackLink from './';
+import BackLink from '.';
 
 describe('Back Link', () => {
   const onButtonClick = sinon.spy();
-  const wrapper = <BackLink goBack={onButtonClick}>example</BackLink>;
+  const wrapper = <BackLink onClick={onButtonClick}>example</BackLink>;
 
   it('renders without crashing', () => {
     const div = document.createElement('div');
@@ -16,7 +16,7 @@ describe('Back Link', () => {
 
   it('simulates click events', () => {
     mount(wrapper)
-      .find('button')
+      .find('a')
       .simulate('click');
     expect(onButtonClick).toHaveProperty('callCount', 1);
   });

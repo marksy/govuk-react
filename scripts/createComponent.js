@@ -1,10 +1,10 @@
-// TODO consider replacing this with a generator such as:
+// TODO: consider replacing this with a generator such as:
 // https://github.com/CVarisco/create-component-app
 
 const fs = require('fs');
 const path = require('path');
 const mkdirp = require('mkdirp-promise');
-const { version } = require('../lerna.json')
+const { version } = require('../lerna.json');
 
 const componentFolderName = process.argv[2];
 const componentName = `${componentFolderName.charAt(0).toUpperCase()}${componentFolderName.slice(1).replace(/-([a-z])/g, g => g[1].toUpperCase())}`;
@@ -33,25 +33,29 @@ const packageJson = () => {
   const contents = `{
   "name": "@govuk-react/${componentFolderName}",
   "version": "${version}",
+  "dependencies": {
+    "@govuk-react/lib": "^${version}"
+  },
+  "peerDependencies": {
+    "react": ">=16.2.0",
+    "styled-components": ">=4"
+  },
+  "scripts": {
+    "build": "yarn build:lib && yarn build:es",
+    "build:lib": "rimraf lib && babel src -d lib --source-maps --config-file ../../babel.config.js",
+    "build:es": "rimraf es && cross-env BABEL_ENV=es babel src -d es --source-maps --config-file ../../babel.config.js",
+    "docs": "doc-component ./lib/index.js ./README.md"
+  },
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "author": "Alasdair McLeay",
+  "license": "MIT",
+  "homepage": "https://github.com/govuk-react/govuk-react/tree/master/components/${componentFolderName}",
+  "description": "govuk-react ${componentName} component.",
   "private": false,
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {
-    "govuk-colours": "^1.0.3"
-  },
-  "peerDependencies": {
-    "glamorous": ">=4",
-    "prop-types": ">=15",
-    "react": ">=15"
-  },
-  "scripts": {
-    "build": "npm run build:lib && npm run build:es",
-    "build:lib": "rimraf lib && babel src -d lib --source-maps",
-    "build:es": "rimraf es && cross-env BABEL_ENV=es babel src -d es --source-maps"
-  },
-  "main": "lib/index.js",
-  "module": "es/index.js"
+  }
 }
 `;
   writeFile(filename, contents);
@@ -61,13 +65,13 @@ const packageJson = () => {
 const testScript = () => {
   const filename = 'test.js';
   const contents = `import React from 'react';
-import ReactDOM from 'react-dom';
-import ${componentName} from './';
+import { mount } from 'enzyme';
 
-describe(${componentName}, () => {
-  it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<${componentName}>Example</${componentName}>, div);
+import { ${componentName}Documented as ${componentName} } from '.';
+
+describe('${componentName}', () => {
+  it('matches snapshot', () => {
+    expect(mount(<${componentName}>${componentName} example</${componentName}>)).toMatchSnapshot('${componentName}');
   });
 });
 `;
@@ -79,23 +83,24 @@ const storiesScript = () => {
   const filename = 'stories.js';
   const contents = `import React from 'react';
 import { storiesOf } from '@storybook/react';
+// TODO: remove comments for documentation once docs have been generated
+// import { withDocsCustom } from '@govuk-react/storybook-components';
 
 import ${componentName} from '.';
 
-storiesOf('${componentName}', module).add('${componentName}', () => (
-  <${componentName}>${componentName} example</${componentName}>
-));
-`;
-  writeFile(filename, contents);
-};
+// import ReadMe from '../README.md';
 
-// write example.js file
-const exampleScript = () => {
-  const filename = 'example.js';
-  const contents = `import React from 'react';
-import ${componentName} from '.';
+const stories = storiesOf('${componentName}', module);
 
-export default () => <${componentName}>${componentName} example</${componentName}>;
+stories.add(
+  'Component default',
+  // withDocsCustom(
+  //   ReadMe,
+    () => (
+      <${componentName}>${componentName} example</${componentName}>
+    ),
+  // ),
+);
 `;
   writeFile(filename, contents);
 };
@@ -103,41 +108,37 @@ export default () => <${componentName}>${componentName} example</${componentName
 // write index.js file
 const indexScript = () => {
   const filename = 'index.js';
-  const contents = `// TODO INSERT A COMMENT REFERENCE TO EXTERNAL URL IF POSSIBLE
-
-import React from 'react';
+  const contents = `import React from 'react';
 import PropTypes from 'prop-types';
-import glamorous from 'glamorous';
+import styled from 'styled-components';
+import { spacing, typography } from '@govuk-react/lib';
 
-import {
-  FONT_SIZE,
-  LINE_HEIGHT,
-  MEDIA_QUERIES,
-  NTA_LIGHT,
-} from '@govuk-react/constants';
-
-const ${componentName}Inner = glamorous.div({
-  boxSizing: 'border-box',
-  fontFamily: NTA_LIGHT,
-  fontWeight: 400,
-  textTransform: 'none',
-  fontSize: FONT_SIZE.SIZE_14,
-  lineHeight: LINE_HEIGHT.SIZE_14,
-  width: '100%',
-  [MEDIA_QUERIES.LARGESCREEN]: {
-    fontSize: FONT_SIZE.SIZE_16,
-    lineHeight: LINE_HEIGHT.SIZE_16,
-  },
-});
-
-const ${componentName} = ({ children }) => (
-  <${componentName}Inner>{children}</${componentName}Inner>
+const ${componentName} = styled('div')(
+  typography.font({ size: 16 }),
+  spacing.withWhiteSpace(),
 );
 
-${componentName}.propTypes = {
+/**
+ *
+ * ### Usage
+ *
+ * Simple
+ * \`\`\`jsx
+ * <${componentName}>Example</${componentName}>
+ * \`\`\`
+ *
+ * ### References
+ * - TODO: INSERT A REFERENCE TO EXTERNAL URL IF POSSIBLE
+ */
+const ${componentName}Documented = props => <${componentName} {...props} />;
+
+${componentName}Documented.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
+${componentName}.propTypes = ${componentName}Documented.propTypes;
+
+export { ${componentName}Documented };
 export default ${componentName};
 `;
   writeFile(filename, contents);
@@ -153,9 +154,10 @@ Please use a different name or delete the existing folder 🆗`);
     packageJson();
     testScript();
     storiesScript();
-    exampleScript();
     indexScript();
     console.log(`✅  The component '${componentName}' was created successfully`);
+    console.log(`⚠️  Please ensure you add it to the package.json file for both packages/govuk-react and packages/storybook
+and ensure that it is exported in packages/govuk-react/src/index.js`);
   });
   return false;
 };
